@@ -4,6 +4,8 @@ import tailwindcss from "@tailwindcss/vite";
 
 // Change this to your GitHub repo name
 const repoName = "job-management";
+const API_URL = import.meta.env.PROD ? "https://mock-jobs-back.onrender.com"
+: "/api";
 
 export default defineConfig({
   base: '/', 
@@ -23,7 +25,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'https://mock-jobs-back.onrender.com',
+        target: `${API_URL}`,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
