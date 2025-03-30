@@ -11,7 +11,7 @@ const JobListings = ({ isHome = false }) => {
   useEffect(() => { 
     const fetchJobs = async () => {
       try {
-        const res = await fetch('/api/jobs');
+        const res = await fetch('https://mock-jobs-back.onrender.com/jobs');
         const data = await res.json();
         setJobs(data);
       } catch(error) {
