@@ -13,35 +13,40 @@ import AddJobPage from './pages/AddJobPage';
 import EditJobPage from './pages/EditJobPage';
 
 const App = () => {
+   const API_URL = import.meta.env.VITE_API_URL
 
   const addJob = async (newJob) => { 
-    const res = await fetch('/api/jobs', {
+    const res = await fetch(`${API_URL}/jobs`, {
       method: 'POST',
       headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(newJob)
   });
+  if (!res.ok) throw new Error("Failed to add job")
   return;
   };
 
   // Delete Job
   const deleteJob = async (id) => {
-    const res = await fetch(`/api/jobs/${id}`, {
+    const res = await fetch(`${API_URL}/jobs/${id}`, {
       method: 'DELETE',
   });
+  if (!res.ok) throw new Error("Failed to delete job")
   return;
   };
 
   // Edit Job
   const editJob = async(job) => {
-    const res = await fetch(`/api/jobs/${job.id}`, {
+    const res = await fetch(`${API_URL}/jobs/${job.id}`, {
       method: 'PUT',
       headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(job)
   });
+  
+  if (!res.ok) throw new Error("Failed to edit job")
   return;
 
   }

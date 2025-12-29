@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState } from 'react';
-import { useParams, useLoaderData, useNavigate, Link } from 'react-router-dom';
-import { ToastContainer,toast } from 'react-toastify'; 
+import { useParams, useLoaderData, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify'; 
 
   const EditJobPage = ({ editedJobSubmit }) => {
     const  job  = useLoaderData();
+    
     const company = job.company;
     const [title, setTitle] = useState(job.title);
     const [type, setType] = useState(job.type);
